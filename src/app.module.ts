@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule, HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
+import * as Joi from 'joi';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
@@ -16,9 +18,15 @@ import config from './config';
 @Module({
   imports: [
     ConfigModule.forRoot({
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       envFilePath: enviroments[process.env.NODE_ENV || 'dev'] || '.env',
       load: [config],
       isGlobal: true,
+      validationSchema: Joi.object({
+        API_KEY: Joi.number().required(),
+        DATABASE_NAME: Joi.string().required(),
+        DATABASE_PORT: Joi.number().required().default(5432),
+      }),
     }),
     HttpModule,
     UsersModule,
@@ -38,6 +46,7 @@ import config from './config';
           'https://jsonplaceholder.typicode.com/todos',
         );
         const tasks = await lastValueFrom(request);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return tasks.data;
       },
       inject: [HttpService],
