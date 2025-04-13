@@ -48,11 +48,8 @@ export class ProductsController {
     return this.productService.update(+id, payload);
   }
 
-  @Delete(':productId')
-  delete(@Param('productId') productId: number) {
-    return {
-      id: productId,
-      message: 'delete product',
-    };
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return this.productService.remove(+id);
   }
 }
