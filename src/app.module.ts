@@ -8,9 +8,7 @@ import { BrandsModule } from './brands/brands.module';
 import { CustomerModule } from './customer/customer.module';
 import { HttpModule, HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
-
-const API_KEY = '123455656';
-const API_KEY_PROD = 'PROD-123455656';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -20,14 +18,11 @@ const API_KEY_PROD = 'PROD-123455656';
     CategoriesModule,
     BrandsModule,
     CustomerModule,
+    DatabaseModule,
   ],
   controllers: [AppController],
   providers: [
     AppService,
-    {
-      provide: 'API_KEY',
-      useValue: process.env.NODE_ENV === 'production' ? API_KEY_PROD : API_KEY,
-    },
     {
       provide: 'TASKS',
       useFactory: async (httpService: HttpService) => {
