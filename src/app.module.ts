@@ -10,11 +10,12 @@ import { CategoriesModule } from './categories/categories.module';
 import { BrandsModule } from './brands/brands.module';
 import { CustomerModule } from './customer/customer.module';
 import { DatabaseModule } from './database/database.module';
+import { enviroments } from './environments';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env',
+      envFilePath: enviroments[process.env.NODE_ENV || 'dev'] || '.env',
       isGlobal: true,
     }),
     HttpModule,
