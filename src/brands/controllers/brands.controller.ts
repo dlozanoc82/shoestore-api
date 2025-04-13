@@ -9,9 +9,9 @@ import {
   Body,
   HttpStatus,
   HttpCode,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { BrandsService } from '../services/brands.service';
-import { ParseIntPipe } from 'src/common/parse-int/parse-int.pipe';
 import { CreateBrandDto, UpdateBrandDto } from '../dtos/brands.dtos';
 
 @Controller('brands')

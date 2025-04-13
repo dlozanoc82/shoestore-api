@@ -9,14 +9,14 @@ import {
   Body,
   HttpStatus,
   HttpCode,
+  ParseIntPipe,
 } from '@nestjs/common';
-import { CustomersService } from '../services/customer.service';
-import { ParseIntPipe } from 'src/common/parse-int/parse-int.pipe';
+import { CustomerService } from '../services/customer.service';
 import { CreateCustomerDto, UpdateCustomerDto } from '../dtos/customer.dtos';
 
 @Controller('customers')
-export class CustomersController {
-  constructor(private readonly customersService: CustomersService) {}
+export class CustomerController {
+  constructor(private readonly customersService: CustomerService) {}
 
   @Get()
   findAll() {

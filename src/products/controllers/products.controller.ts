@@ -8,9 +8,9 @@ import {
   Put,
   HttpStatus,
   HttpCode,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { ProductService } from 'src/products/services/product.service';
-import { ParseIntPipe } from 'src/common/parse-int/parse-int.pipe';
 import {
   CreateProductDto,
   UpdateProductDto,

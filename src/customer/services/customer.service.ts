@@ -4,7 +4,7 @@ import { Customer } from '../entities/customer.entity';
 import { CreateCustomerDto, UpdateCustomerDto } from '../dtos/customer.dtos';
 
 @Injectable()
-export class CustomersService {
+export class CustomerService {
   private counterId = 1;
   private customers: Customer[] = [
     {

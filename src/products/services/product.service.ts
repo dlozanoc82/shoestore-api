@@ -25,9 +25,8 @@ export class ProductService {
 
   findOne(id: number) {
     const product = this.products.find((product) => product.id === id);
-    if (!product) {
+    if (!product)
       throw new NotFoundException(`Product with id ${id} not found`);
-    }
     return product;
   }
 

@@ -9,9 +9,9 @@ import {
   Body,
   HttpCode,
   HttpStatus,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { CategoriesService } from '../services/categories.service';
-import { ParseIntPipe } from 'src/common/parse-int/parse-int.pipe';
 import { CreateCategoryDto, UpdateCategoryDto } from '../dtos/category.dtos';
 
 @Controller('categories')
