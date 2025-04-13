@@ -1,19 +1,30 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ProductsController } from './controllers/products/products.controller';
-import { CategoriesController } from './controllers/categories/categories.controller';
-import { ProductService } from './services/product/product.service';
-import { BrandsController } from './controllers/brands/brands.controller';
-import { CustomerController } from './controllers/customer/customer.controller';
-import { UsersController } from './controllers/users/users.controller';
-import { UsersService } from './services/users/users.service';
-import { BrandsService } from './services/brands/brands.service';
-import { CustomerService } from './services/customer/customer.service';
-import { CategoriesService } from './services/categories/categories.service';
+import { ProductsController } from './products/controllers/products.controller';
+import { CategoriesController } from './categories/controllers/categories.controller';
+import { ProductService } from './products/services/product.service';
+import { BrandsController } from './brands/controllers/brands.controller';
+import { CustomerController } from './customer/controllers/customer.controller';
+import { UsersController } from './users/controllers/users.controller';
+import { UsersService } from './users/services/users.service';
+import { BrandsService } from './brands/services/brands.service';
+import { CustomerService } from './customer/services/customer.service';
+import { CategoriesService } from './categories/services/categories.service';
+import { UsersModule } from './users/users.module';
+import { ProductsModule } from './products/products.module';
+import { CategoriesModule } from './categories/categories.module';
+import { BrandsModule } from './brands/brands.module';
+import { CustomerModule } from './customer/customer.module';
 
 @Module({
-  imports: [],
+  imports: [
+    UsersModule,
+    ProductsModule,
+    CategoriesModule,
+    BrandsModule,
+    CustomerModule,
+  ],
   controllers: [
     AppController,
     ProductsController,
